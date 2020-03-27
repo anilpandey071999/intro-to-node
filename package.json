@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/anilpandey071999/intro-to-node/issues"
   },
-  "homepage": "https://github.com/anilpandey071999/intro-to-node#readme"
+  "homepage": "https://github.com/anilpandey071999/intro-to-node#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }
