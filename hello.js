@@ -55,18 +55,22 @@ con.connect(function(err){
 	})*/
 
 	//displaying data
-	var sql = "SELECT * FROM `customers` ";
+	/*var sql = "SELECT * FROM `customers` ";
 	con.query(sql,function(err,result, fields){
 		if(err) throw err;
 			console.log("ID | NAME 	| EMAIL");
 			console.log("-----------------------------------");
-
 		for(var i=0 ; i<result.length;i++){
 			console.log(result[i].id+"  | "+result[i].name+" 	| "+result[i].email);
 		}
-		
-	})
-	
+	})*/
+
+	//where clause and LIKE
+	var sql = "SELECT * FROM customers WHERE email LIKE '%s%' ";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})	
 });
 
 const PORT = process.env.PORT || 5000
