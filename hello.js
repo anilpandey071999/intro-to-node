@@ -58,8 +58,11 @@ con.connect(function(err){
 	var sql = "SELECT * FROM `customers` ";
 	con.query(sql,function(err,result, fields){
 		if(err) throw err;
-		for(var i=0 ; i<5;i++){
-			console.log(result[i].email);
+			console.log("ID | NAME 	| EMAIL");
+			console.log("-----------------------------------");
+
+		for(var i=0 ; i<result.length;i++){
+			console.log(result[i].id+"  | "+result[i].name+" 	| "+result[i].email);
 		}
 		
 	})
