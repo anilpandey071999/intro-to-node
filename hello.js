@@ -66,11 +66,65 @@ con.connect(function(err){
 	})*/
 
 	//where clause and LIKE
-	var sql = "SELECT * FROM customers WHERE email LIKE '%s%' ";
+	/*var sql = "SELECT * FROM customers WHERE email LIKE '%s%' ";
 	con.query(sql,function(err,result){
 		if(err) throw err;
 		console.log(result);
-	})	
+	})	*/
+	//or 
+	/*var sql = "SELECT * FROM customers WHERE email LIKE ? or id = ?";
+	var name_search = "%s%";
+	var id_search = 1;
+	con.query(sql,[name_search,id_search],function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/	
+	//and
+	/*var sql = "SELECT * FROM customers WHERE email LIKE '%w%' AND id = 1";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})	*/
+	//order by ascending 
+	/*var sql = " SELECT * from customers order by name asc";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/
+
+	//order by descending
+	/*var sql = " SELECT * from customers order by name desc";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/
+
+	//deleating from table
+	/*var sql = "DELETE FROM customers where id = 4";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/
+
+	//update the record
+	/*var sql = "update customers set name = 'sam' where id = 3 ";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/
+	//limit
+	/*var sql = "SELECT * FROM customers order by id desc limit 1,4";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})*/
+	//drop table
+	var sql = "DROP table customers";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+	})
+
 });
 
 const PORT = process.env.PORT || 5000
