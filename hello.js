@@ -1,7 +1,73 @@
 var http = require('http');
 var url = require('url');
 var fs =require('fs');
+var mysql = require('mysql');
+//Create A Connection
+var con = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "nodeDB",
+})
+
+//Connect TO MYSQL
+con.connect(function(err){
+	if(err) throw err
+	console.log("Connected to Database!");
+	/*con.query("CREATE DATABASE nodeDB", function(err,result){
+		if(err) throw err;
+		console.log("Database create")
+	})*/
+
+	//create Table 
+
+	/*var sql = "CREATE TABLE customers(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), email VARCHAR(255))";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log("TABLE HAS BEEN CREATED");
+	})*/
+	//Alter Table
+	/*var sql = "ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result);
+		console.log("table has bee altered ");
+	})*/
+
+	//INSERTING DATA INTO TABLE
+	/*var sql="INSERT INTO customers (name ,email) VALUES ('Walker' , 'walker@gmail.com') ";
+	con.query(sql,function(err,result){
+		if(err) throw err;
+		console.log(result+"\nData has been inserted...");
+	})*/
+
+	//inserting multipla data at time
+	/*var sql = "INSERT INTO customers (name, email) VALUES ?";
+	var values=[
+		['tim','tim@tim.com'],
+		['sam','sam@sam.com'],
+		['tina','tina@tina.com'],
+		['Laura','Laura@Laura.com'],
+	]
+	con.query(sql,[values],function(err,result){
+		if(err) throw err;
+		console.log(result + "\n MULTIPAL DATA HAS BEEN INSERTED\n"+ "Records INSERTED: "+ result.affectedRows);
+	})*/
+
+	//displaying data
+	var sql = "SELECT * FROM `customers` ";
+	con.query(sql,function(err,result, fields){
+		if(err) throw err;
+		for(var i=0 ; i<5;i++){
+			console.log(result[i].email);
+		}
+		
+	})
+	
+});
+
 const PORT = process.env.PORT || 5000
+
 
 http.createServer(function(req,res){
 	var q = url.parse(req.url,true);
